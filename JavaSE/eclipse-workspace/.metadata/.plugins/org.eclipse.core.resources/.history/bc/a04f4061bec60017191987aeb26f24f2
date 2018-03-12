@@ -1,0 +1,62 @@
+/*
+ * This program demonstrates static methods;
+ * @version 1.8 2017-11-05 Sun.
+ * @author:Vulcan
+ */
+public class StaticTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		aEmployee[] staff = new aEmployee[3];
+		
+		staff[0] = new aEmployee("Vulcan", 50000);
+		staff[1] = new aEmployee("Harry", 40000);
+		staff[2] = new aEmployee("Billy", 60000);
+		
+		// print put information about all Employee objects
+		for(aEmployee e:staff) {
+			e.setId();
+			System.out.println("name="+e.getName()+", id="+e.getId()
+									+", salary="+e.getSalary());
+		}
+		
+		int n = aEmployee.getNextId();		// calls static field
+		System.out.println("Next available id="+n);
+	}
+
+}
+
+class aEmployee{
+	private static int nextId = 1;
+	
+	private String name;
+	private double salary;
+	private int id;
+	
+	public aEmployee(String n, double s) {
+		name = n;
+		salary = s;
+		id = 0;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId() {
+		id = nextId;	//set id to next available id
+		nextId++;
+	}
+	public static int getNextId() {
+		return nextId;		//returns static field
+	}
+	public static void main(String[] args) {	//unit test
+		aEmployee e = new aEmployee("Vulcan", 50000);
+		System.out.println(e.getName()+" "+e.getSalary());
+	}
+}
