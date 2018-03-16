@@ -1,0 +1,10 @@
+- URL:代表资源的地址信息
+- URN:代表某个资源独一无二的名称
+- URI:后来的标准制定了URI，URL和URN成为URI的子集
+
+- HTTP: 基于请求/响应模型
+		无状态通信协议
+
+- JVM是Java程序唯一认识的操作系统
+- Web容器是Servlet/JSP唯一认得的HTTP服务器
+- Web容器：比如Apache Tomcat
