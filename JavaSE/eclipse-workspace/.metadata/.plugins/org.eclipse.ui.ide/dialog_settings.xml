@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/soundwave/Desktop/eclipse-workspace/recruit"/>
+		<item value="/home/soundwave/file/github/Java/JavaSE/eclipse-workspace/JDBCDemo"/>
+		<item value="/home/soundwave/file/github/Java/JavaSE/eclipse-workspace/arrays"/>
+	</list>
 	<section name="NewWizardAction">
 	</section>
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
