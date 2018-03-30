@@ -57,13 +57,8 @@ public class DbBean implements Serializable {
 		this.jdbcUrl = jdbcUrl;
 	}
 	
-	public void setUserName(String username) {
+	public void setUsername(String username) {
 		this.username = username;
-	}
-	
-	public static void main(String[] args) {
-
-		
 	}
 
 }

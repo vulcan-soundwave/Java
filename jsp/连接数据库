@@ -7,7 +7,9 @@
 
 2. 数据库中Schema和Database有什么区别
 
-
+3、JDBCDemo web工程在访问http://localhost:8080/JDBCDemo/html/conn.jsp时出现出现一个错误：
+HTTP Status 500 - javax.servlet.ServletException: javax.servlet.jsp.JspTagException: Invalid property in &lt;set&gt;: "username"
+原因是DbBean.java中private String username，而方法为public void setUserName(String username)，应该为public void setUsername()
 
 
 
