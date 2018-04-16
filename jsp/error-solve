@@ -1,0 +1,4 @@
+1.出现错误the import XXX cannot be resolved.
+re:
+在Eclipse中，右击项目，Properties->Java Build Path->Libraries->Add External JARs，找到你计算机中tomcat的解压路径，在lib文件夹下选中"servlet-api.jar"，添加点击“确定” 
+2.
