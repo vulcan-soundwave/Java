@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.EquipbaseDao">
+	<select id="getEquipByEid" resultType="entity.Equipbase"
+		parameterType="int">
+		select *
+		from equipbase
+		where eid =
+		#{eid,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByEid" parameterType="int">
+		delete from equipbase
+		where eid
+		= #{eid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByUsername" parameterType="String">
+		DELETE FROM user
+		WHERE username=#{username,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insertEquipbase" parameterType="entity.Equipbase">
+		insert into equipbase
+		(eid,type,key)
+		values (#{eid,jdbcType=INTEGER},#{type,jdbcType=VARCHAR},#{key,jdbcType=VARCHAR})
+	</insert>
+
+</mapper>

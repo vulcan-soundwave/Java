@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.WeightDao">
+	<select id="getTotalByEid" parameterType="int" resultType="int">
+		SELECT
+		count(*) FROM
+		weight
+		WHERE eid=#{eid,jdbcType=INTEGER}
+	</select>
+	<select id="getDataByEid" parameterType="map" resultType="entity.WeightInf">
+		SELECT
+		time,weight FROM
+		weight
+		WHERE eid=#{eid,jdbcType=INTEGER}
+		ORDER BY time
+		DESC
+		limit #{offset},#{size}
+	</select>
+	<insert id="insert" parameterType="entity.Weight">
+		INSERT INTO weight
+		(eid,time,weight)
+		VALUES
+		(#{eid,jdbcType=INTEGER},#{time,jdbcType=VARCHAR},#{weight,jdbcType=FLOAT})
+	</insert>
+</mapper>

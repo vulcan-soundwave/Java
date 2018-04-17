@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.HeartrateDao">
+	<select id="getTotalByEid" parameterType="int" resultType="int">
+		SELECT
+		count(*) FROM
+		heartrate
+		WHERE eid=#{eid,jdbcType=INTEGER}
+	</select>
+
+	<select id="getDataByEid" parameterType="map" resultType="entity.HeartrateInf">
+		SELECT
+		time,rate FROM
+		heartrate
+		WHERE eid=#{eid,jdbcType=INTEGER}
+		ORDER BY time
+		DESC
+		limit #{offset},#{size}
+	</select>
+	<insert id="insert" parameterType="entity.User">
+		insert into heartrate
+		(eid,time,rate)
+		values
+		(#{eid,jdbcType=INTEGER},#{time,jdbcType=VARCHAR},#{rate,jdbcType=INTEGER})
+	</insert>
+</mapper>

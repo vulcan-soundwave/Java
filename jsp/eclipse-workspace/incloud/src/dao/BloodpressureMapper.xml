@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.BloodpressureDao">
+	<select id="getTotalByEid" parameterType="int" resultType="int">
+		SELECT
+		count(*) FROM
+		bloodpressure
+		WHERE eid=#{eid,jdbcType=INTEGER}
+	</select>
+	<select id="getDataByEid" resultType="entity.BloodpressureInf"
+		parameterType="map">
+		SELECT time,h,l
+		FROM bloodpressure
+		WHERE eid =
+		#{eid,jdbcType=INTEGER}
+		ORDER BY time
+		DESC
+		limit #{offset},#{size}
+	</select>
+
+	<insert id="insert" parameterType="entity.Bloodpressure">
+		insert into bloodpressure
+		(eid,h,l,time)
+		values
+		(#{eid,jdbcType=INTEGER},#{h,jdbcType=INTEGER},#{l,jdbcType=INTEGER},#{time,jdbcType=VARCHAR})
+	</insert>
+
+</mapper>

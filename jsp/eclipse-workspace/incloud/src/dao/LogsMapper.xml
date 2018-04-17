@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.LogsDao">
+	<select id="getTotalByEid" parameterType="int" resultType="int">
+		SELECT
+		count(*) FROM
+		logs
+		WHERE eid=#{eid,jdbcType=INTEGER}
+	</select>
+
+	<select id="getDataByEid" parameterType="map" resultType="entity.LogsInf">
+		SELECT
+		time,inf FROM
+		logs
+		WHERE eid=#{eid,jdbcType=INTEGER}
+		ORDER BY time
+		DESC
+		limit #{offset},#{size}
+	</select>
+	<insert id="insert" parameterType="entity.Logs">
+		INSERT INTO logs
+		(eid,inf,time) VALUES
+		(#{eid,jdbcType=INTEGER},#{inf,jdbcType=INTEGER},#{time,jdbcType=VARCHAR})
+	</insert>
+</mapper>

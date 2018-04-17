@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.UserDao">
+	<select id="getUserByUsername" resultType="entity.User"
+		parameterType="java.lang.String">
+		select *
+		from user
+		where username =
+		#{username,jdbcType=VARCHAR}
+	</select>
+	<select id="getUserByUid" resultType="entity.User"
+		parameterType="String">
+		SELECT *
+		FROM user
+		WHERE uid=#{uid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByUid" parameterType="int">
+		delete from card
+		where uid
+		= #{uid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByUsername" parameterType="String">
+		DELETE FROM user
+		WHERE username=#{username,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="entity.User"
+		useGeneratedKeys="true" keyProperty="uid">
+		insert into user
+		(username,password,token)
+		values
+		(#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{token,jdbcType=VARCHAR})
+	</insert>
+	<update id="updateByPassword" parameterType="entity.User">
+		UPDATE user
+		<set>
+			<if test="password != null">
+				password = #{password},
+			</if>
+		</set>
+		WHERE uid = #{uid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByToken" parameterType="map">
+		UPDATE user
+		<set>
+			<if test="token != null">
+				token = #{token,jdbcType=VARCHAR}
+			</if>
+		</set>
+		WHERE username =
+		#{username,jdbcType=VARCHAR}
+	</update>
+</mapper>
