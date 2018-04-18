@@ -1,4 +1,17 @@
 1.出现错误the import XXX cannot be resolved.
 re:
 在Eclipse中，右击项目，Properties->Java Build Path->Libraries->Add External JARs，找到你计算机中tomcat的解压路径，在lib文件夹下选中"servlet-api.jar"，添加点击“确定” 
-2.
+
+2.在eclipse中处理文件需要引入两个包：
+import com.sun.image.codec.jpeg.JPEGCodec(restriction on required library '/usr/java/jdk1.8.0_131/jre/lib/rt.jar');
+import com.sun.image.codec.jpeg.JPEGImageEncoder(restriction on required library '/usr/java/jdk1.8.0_131/jre/lib/rt.jar');
+提示"Access restriction: The type "JPEG" is not API"
+"Access restriction: The Type "JPEGImageEncoder" is not API"
+re:
+最终找到的原因com.sun.image.codec.jpeg.*是为非公开API，eclipse默认把这些受访问限制的API设成了ERROR
+解决办法1：
+包的位置在 /usr/java/jdk1.8.0_131/jre/lib/rt.jar
+将其放在工程的WEB-INF/lib下，即可解决
+解决办法2：
+Windows->preferences>java>Compiler>Errors/Warnings>把右侧的Deprecated and restricted API>Forbidden reference的【Error】置为【Warning】即可
+
