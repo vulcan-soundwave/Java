@@ -30,9 +30,7 @@ public void doGet(HttpServletRequest req,
 		HttpServletResponse res) 
 				throws ServletException, IOException {
 	res.setContentType("image/jpeg");
-	BufferedImage bufferedImage = 
-	new BufferedImage(300, 200, 
-	BufferedImage.TYPE_INT_RGB);
+	BufferedImage bufferedImage = new BufferedImage(300, 200, BufferedImage.TYPE_INT_RGB);
 	
 	Graphics g = bufferedImage.getGraphics();
 	g.setColor(Color.white);
