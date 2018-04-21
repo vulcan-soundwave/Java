@@ -1,7 +1,7 @@
 
 /*
  * Problem: 动态产生四位数字验证码
- * re:黑白规则高度数字
+ * re:彩色不规则高度数字
  * tips: 动态的生成图片，是Project->ImageShowPrac->name请求参数动态画到图片的延伸
  * */
 
@@ -24,8 +24,8 @@ import javax.servlet.http.HttpSession;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
-@WebServlet("/show")
-public class VerifyCode extends HttpServlet {
+@WebServlet("/show_2")
+public class VerifyCode_2 extends HttpServlet {
 	int width = 100;
 	int height = 25;
 //	private String codes="23456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";
@@ -47,16 +47,30 @@ public class VerifyCode extends HttpServlet {
 		
 		// randomCode 用于保存随机产生的验证码  
 	    StringBuffer randomCode = new StringBuffer();  
-//	    int red = 0, green = 0, blue = 0; 
+	    int red = 0, green = 0, blue = 0; 
 	    
 	    // 随机产生4位数字的验证码  
 	    for (int i = 0; i < 4; i++) {  
 	        // 得到随机产生的验证码数字  
 	        String strRand = String.valueOf(random.nextInt(10));  
-	        g.drawString(strRand, 0, 0);  
+	      
+	        // 产生随机的颜色分量来构造颜色值  
+	        red = random.nextInt(110);  
+	        green = random.nextInt(50);  
+	        blue = random.nextInt(50);  
+	      
+	        // 用随机产生的颜色将验证码绘制到图像中  
+	        g.setColor(new Color(red, green, blue));  
+	        g.drawString(strRand, 13 * i + 6, 16);  
+	      
 	        randomCode.append(strRand);  
 	    }  
 	      
+	    // 将四位数字的验证码保存到session中  
+	   //HttpSession session = request.getSession();  
+	   //session.setAttribute("randomCode", randomCode.toString());  
+	    
+	    
 		//String name = req.getParameter("name");
 		g.drawString(randomCode.toString(), 20, 20);
 		
